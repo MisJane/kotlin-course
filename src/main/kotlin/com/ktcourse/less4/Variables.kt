@@ -42,3 +42,5 @@ val myLong6: Long = 123456789123456789L
 val myFloat6: Float = 6.626f
 val myDouble6: Double = 0.007
 val myString8: String = "Android Studio"
+
+//byte...
