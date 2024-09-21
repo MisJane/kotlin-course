@@ -8,6 +8,10 @@ fun main() {
     getPeopleAge(1)
     getTransport(3.00)
     getBonuses(550F)
+    getFileExtension("txt")
+    temperatureConversion(1.00, "F")
+    getOutfit(12)
+    movieChoice(33)
 }
 
 fun getMonthByIf(numOfTheMonth: Int) {
@@ -95,10 +99,60 @@ fun getTransport(length: Double): Any {
 }
 
 fun getBonuses(sum: Float) {
-    val bonuses = when (sum){
-        in 0F .. 1000F -> ((sum / 100) * 2)
+    val bonuses = when (sum) {
+        in 0F..1000F -> ((sum / 100) * 2)
         else -> ((sum / 100) * 5)
 
     }
     println("You have $bonuses bonus points")
+}
+
+fun getFileExtension(extension: String) {
+    if (extension contentEquals "txt") {
+        println("This is a text file")
+    } else if (extension contentEquals "doc") {
+        println("This is a text file")
+    } else if (extension contentEquals "bmp") {
+        println("This is an image file")
+    } else if (extension contentEquals "jpg") {
+        println("This is an image file")
+    } else if (extension contentEquals "jpeg") {
+        println("This is an image file")
+    } else if (extension contentEquals "xls") {
+        println("This is a table file")
+    } else if (extension contentEquals "xlsx") {
+        println("This is a table file")
+    } else println("Unknown format")
+}
+
+
+fun temperatureConversion(temp: Double, format: String) {
+    val сelsius = String.format("%.2f", ((temp - 32) / 1.8))
+    val fahrenheit = String.format("%.2f", ((temp * 1.8) + 32))
+    if (format == buildString { append("F") }) {
+        println("$сelsius C")
+    } else if (format == buildString { append("C") }) {
+        println("$fahrenheit F")
+    } else {
+        println("Unknown format")
+    }
+}
+
+
+fun getOutfit(temperature: Int) {
+    val res = when (temperature) {
+        in -30..0 -> "You need to put on a jacket and a hat."
+        in 0..15 -> "You need to put on a windbreaker."
+        in 15..35 -> "You need to put on a T-shirt and shorts."
+        else -> "You should stay at home."
+    }
+    println(res)
+}
+
+fun movieChoice(age: Int) {
+    if (age < 10) {
+        println("We offer to watch children's films")
+    } else if (age in 10.. 17){
+        println("We offer to watch children's or teen movies")
+    } else (println("You can choose to watch any movies"))
 }
