@@ -127,16 +127,26 @@ fun getFileExtension(extension: String) {
 
 
 fun temperatureConversion(temp: Double, format: String) {
+
     val сelsius = String.format("%.2f", ((temp - 32) / 1.8))
     val fahrenheit = String.format("%.2f", ((temp * 1.8) + 32))
     if (format == buildString { append("F") }) {
-        println("$сelsius C")
+        if (temp > -459.67) {
+            println("$сelsius C")
+        } else {
+            println("There is no temperature below this value. At least in our universe.")
+        }
     } else if (format == buildString { append("C") }) {
+        if (temp > 273.15) {
         println("$fahrenheit F")
+        } else {
+            println("There is no temperature below this value. At least in our universe.")
+        }
     } else {
         println("Unknown format")
     }
 }
+
 
 
 fun getOutfit(temperature: Int) {
@@ -152,7 +162,7 @@ fun getOutfit(temperature: Int) {
 fun movieChoice(age: Int) {
     if (age < 10) {
         println("We offer to watch children's films")
-    } else if (age in 10.. 17){
+    } else if (age in 10..17) {
         println("We offer to watch children's or teen movies")
     } else (println("You can choose to watch any movies"))
 }
