@@ -105,9 +105,9 @@ fun main() {
     println("")
     println("*: ")
 
-    for (i in 0..10) {
-        for (j in 0..10) {
-            print(i + 1 * j)
+    for (i in 1..10) {
+        for (j in 1 .. 10) {
+            print(i * j)
             print(" ")
         }
         println()
