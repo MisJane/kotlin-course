@@ -1,6 +1,5 @@
 package com.ktcourse.less6
 
-
 fun main() {
     getMonthByIf(5)
     getMonth(9)
@@ -9,6 +8,7 @@ fun main() {
     getTransport(3.00)
     getBonuses(550F)
     getFileExtension("txt")
+    getFileExt("jpg")
     temperatureConversion(1.00, "F")
     getOutfit(12)
     movieChoice(33)
@@ -59,7 +59,6 @@ fun getMonth(numOfTheMonth: Int): Any {
         11 -> println("November")
         12 -> println("December")
         else -> "Wrong month!"
-
     }
 }
 
@@ -125,6 +124,14 @@ fun getFileExtension(extension: String) {
     } else println("Unknown format")
 }
 
+fun getFileExt(ext: String): String {
+    return when (ext) {
+        "txt", "doc" -> "text"
+        "jpeg", "jpg" -> "pic"
+        else -> "unk"
+    }
+}
+
 
 fun temperatureConversion(temp: Double, format: String) {
 
@@ -138,7 +145,7 @@ fun temperatureConversion(temp: Double, format: String) {
         }
     } else if (format == buildString { append("C") }) {
         if (temp > 273.15) {
-        println("$fahrenheit F")
+            println("$fahrenheit F")
         } else {
             println("There is no temperature below this value. At least in our universe.")
         }
@@ -147,16 +154,13 @@ fun temperatureConversion(temp: Double, format: String) {
     }
 }
 
-
-
-fun getOutfit(temperature: Int) {
-    val res = when (temperature) {
-        in -30..0 -> "You need to put on a jacket and a hat."
+fun getOutfit(temperature: Int) : String{
+    return when (temperature) {
+        in -30 until  0 -> "You need to put on a jacket and a hat."
         in 0..15 -> "You need to put on a windbreaker."
         in 15..35 -> "You need to put on a T-shirt and shorts."
         else -> "You should stay at home."
     }
-    println(res)
 }
 
 fun movieChoice(age: Int) {
