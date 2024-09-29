@@ -11,6 +11,7 @@ fun main() {
     makeDataPrivate()
     makeEmailTransform()
     getFileName()
+    getAcronym("Объектно-ориентированное программирование")
 }
 
 fun makePhraseFunny(phrase: String): String {
@@ -94,3 +95,15 @@ fun getFileName(fileLink: String = "C:/Пользователи/Документ
 
 }
 
+fun getAcronym(phraseForAcronym: String) {
+    val words = phraseForAcronym.split(" ", "-", "—")
+    val acronym = StringBuilder()
+
+    for (letter in words) {
+        if (letter.isNotEmpty()) {                              //isNotBlank (?)
+            acronym.append(letter[0].uppercase())
+        }
+
+    }
+    println("\n ----* Задание 5 *---- \n $acronym")
+}
