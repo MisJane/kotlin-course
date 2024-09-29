@@ -1,5 +1,6 @@
 package com.ktcourse.lesson8
 
+
 fun main() {
     println(makePhraseFunny("Это невозможно выполнить за один день"))
     println(makePhraseFunny("Я не уверен в успехе этого проекта"))
@@ -7,6 +8,8 @@ fun main() {
     println(makePhraseFunny("Этот код работает без проблем"))
     println(makePhraseFunny("Удача"))
     getLogPhrase()
+    makeDataPrivate()
+    makeEmailTransform()
 }
 
 fun makePhraseFunny(phrase: String): String {
@@ -56,4 +59,20 @@ fun getLogPhrase(logPhrase: String = "Пользователь вошел в с�
 
 }
 
+fun makeDataPrivate(cardNum: String = "4539 1488 0343 6467") {
+    val cardNumWithoutSpaces = cardNum.replace(" ", "")
+    val indexOfCardNum = cardNumWithoutSpaces.takeLast(4)
+    val dataPrivate = cardNumWithoutSpaces.length - indexOfCardNum.length
+    val dataFinal = "*".repeat(dataPrivate)        //replace сложнее и дольше, проще repeat (?)
 
+    return (println("\n" + "----* Задание 2 *----"
+            + "\n"
+            + "$dataFinal $indexOfCardNum"))
+}
+
+fun makeEmailTransform(oldEmail: String = "username@example.com"){
+    return (println("\n" + "----* Задание 3 *----"
+            + "\n"
+            + oldEmail.replace("@", " [at] ").replace(".", " [dot] ")))
+
+}
