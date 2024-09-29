@@ -10,6 +10,7 @@ fun main() {
     getLogPhrase()
     makeDataPrivate()
     makeEmailTransform()
+    getFileName()
 }
 
 fun makePhraseFunny(phrase: String): String {
@@ -65,14 +66,31 @@ fun makeDataPrivate(cardNum: String = "4539 1488 0343 6467") {
     val dataPrivate = cardNumWithoutSpaces.length - indexOfCardNum.length
     val dataFinal = "*".repeat(dataPrivate)        //replace сложнее и дольше, проще repeat (?)
 
-    return (println("\n" + "----* Задание 2 *----"
-            + "\n"
-            + "$dataFinal $indexOfCardNum"))
+    return (println(
+        "\n" + "----* Задание 2 *----"
+                + "\n"
+                + "$dataFinal $indexOfCardNum"
+    ))
 }
 
-fun makeEmailTransform(oldEmail: String = "username@example.com"){
-    return (println("\n" + "----* Задание 3 *----"
-            + "\n"
-            + oldEmail.replace("@", " [at] ").replace(".", " [dot] ")))
+fun makeEmailTransform(oldEmail: String = "username@example.com") {
+    return (println(
+        "\n" + "----* Задание 3 *----"
+                + "\n"
+                + oldEmail.replace("@", " [at] ")
+            .replace(".", " [dot] ")
+    ))
 
 }
+
+fun getFileName(fileLink: String = "C:/Пользователи/Документы/report.txt") {
+
+    return (println(
+        "\n" + "----* Задание 4 *----"
+                + "\n"
+                + fileLink.split("/")
+            .last()
+    ))
+
+}
+
