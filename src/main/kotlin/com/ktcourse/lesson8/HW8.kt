@@ -6,6 +6,7 @@ fun main() {
     println(makePhraseFunny("Произошла катастрофа на сервере"))
     println(makePhraseFunny("Этот код работает без проблем"))
     println(makePhraseFunny("Удача"))
+    getLogPhrase()
 }
 
 fun makePhraseFunny(phrase: String): String {
@@ -37,6 +38,22 @@ fun makePhraseFunny(phrase: String): String {
     }
 
     return newPhrase
+}
+
+fun getLogPhrase(logPhrase: String = "Пользователь вошел в систему -> 2021-12-01 09:48:23") {
+    val indexOfSymbol = logPhrase.indexOf(">")
+    val indexOfDateAndTime = logPhrase.substring(indexOfSymbol + 2)
+    val dateAndTimeSplit = indexOfDateAndTime.split(" ")
+    val date = dateAndTimeSplit[0]
+    val time = dateAndTimeSplit[1]
+
+    return (println(
+        "\n" + "----* Задание 1 *----"
+                + "\n"
+                + "Дата: $date"
+                + "\n" + "Время: $time"
+    ))
+
 }
 
 
