@@ -1,3 +1,13 @@
+package com.ktcourse.lesson8
+
+fun main() {
+    println(makePhraseFunny("Это невозможно выполнить за один день"))
+    println(makePhraseFunny("Я не уверен в успехе этого проекта"))
+    println(makePhraseFunny("Произошла катастрофа на сервере"))
+    println(makePhraseFunny("Этот код работает без проблем"))
+    println(makePhraseFunny("Удача"))
+}
+
 fun makePhraseFunny(phrase: String): String {
     var newPhrase = phrase
 
@@ -29,10 +39,4 @@ fun makePhraseFunny(phrase: String): String {
     return newPhrase
 }
 
-fun main() {
-    println(makePhraseFunny("Это невозможно выполнить за один день"))
-    println(makePhraseFunny("Я не уверен в успехе этого проекта"))
-    println(makePhraseFunny("Произошла катастрофа на сервере"))
-    println(makePhraseFunny("Этот код работает без проблем"))
-    println(makePhraseFunny("Удача"))
-}
+
