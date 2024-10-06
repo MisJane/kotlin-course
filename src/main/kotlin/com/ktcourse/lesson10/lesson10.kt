@@ -163,7 +163,6 @@ fun findSubstring(array: Array<String>, searchString: String): List<String> {
 
     println("\nРабота с массивами Array. Задание 10")
     for (element in array) {
-        if (element.contains(searchString)) {   // Если элемент содержит искомую строку, добавляем его в список
             foundElements.add(element)
         }
     }
