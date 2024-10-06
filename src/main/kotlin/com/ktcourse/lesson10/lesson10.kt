@@ -123,7 +123,7 @@ fun main() {
 
     val words = arrayOf("сумка", "яблоко", "мороженое", "солнце", "порошок", "корова")
     val search = "оро"
-    val result = findSubstring(words, search)
+    val result = findSubstrings(words, search)
     if (result.isNotEmpty()) {
         println("Найдены элементы: ${result.joinToString(", ")}")
     } else {
@@ -158,13 +158,16 @@ fun getEvenOdd(numbers4: Array<Int>) {
  * Верни найденный элемент из функции в виде строки.
  */
 
-fun findSubstring(array: Array<String>, searchString: String): List<String> {
+fun findSubstrings(array: Array<String>, searchString: String): List<String> {
     val foundElements = mutableListOf<String>()
 
-    println("\nРабота с массивами Array. Задание 10")
     for (element in array) {
+        if (element.contains(searchString)) {
             foundElements.add(element)
         }
     }
+
     return foundElements
 }
+
+
