@@ -98,15 +98,12 @@ fun main() {
      * (элементы, присутствующие в первом множестве, но отсутствующие во втором).
      * Реши задачу через вложенные циклы и переменные флаги.
      */
-    val firstSet10: Set<String> = setOf("Hello", "World", "Kotlin", "Vera")
-    val secondSet10: Set<String> = setOf("Vera", "Nadya", "Ljubov")
+    val set1: Set<String> = setOf("Kotlin", "Java", "Scala", "Python")
+    val set2: Set<String> = setOf("Java", "Python")
 
-    val subtractionSet: MutableSet<String> = mutableSetOf()
-    /*
-        for (i in firstSet){
-            if ()
-        }
-    */
+    val diffResult = differenceBetweenSets(set1, set2)
+    println("\n" +
+            "Работа с Множествами Set. Задание 10 \nРазность первого множества относительно второго: $diffResult")
 
     /**
      * Задание 11: Конвертация Множества в Список.
@@ -130,3 +127,28 @@ fun containString(set: Set<String>, searchString: String): Boolean {
     }
     return false
 }
+
+fun differenceBetweenSets(set1: Set<String>, set2: Set<String>): Set<String> {
+
+    val differenceSet: MutableSet<String> = mutableSetOf()
+
+    for (element1 in set1) {
+        var found = false
+
+        // Перебираем элементы второго множества для поиска совпадений
+        for (element2 in set2) {
+            if (element1 == element2) {
+                found = true  // Если элемент найден во втором множестве, ставим флаг
+                break         // Выходим из цикла
+            }
+        }
+
+        // Если элемент не был найден во втором множестве, добавляем его в результат
+        if (!found) {
+            differenceSet.add(element1)
+        }
+    }
+
+    return differenceSet
+}
+
