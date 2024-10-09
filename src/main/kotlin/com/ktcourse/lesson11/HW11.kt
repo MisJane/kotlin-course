@@ -87,7 +87,7 @@ fun main() {
     )
 
     teamMap["Безумие"] = arrayOf("Антон Молодцов", "Николай Пермяков", "Олег Курочкин")
-    val updatedTeam = teamMap["Безумие"] as Array<String>
+    val updatedTeam = teamMap["Безумие"] as Array<*>                    //было as Array<String> - уточнить
     println("\nНовый состав команды 'Безумие': ${updatedTeam.joinToString(", ")}")
 
     /**
@@ -116,25 +116,137 @@ fun main() {
         joinPharmaMap[date] = pill.toMutableList()
     }
     for ((date, pill) in joinPharmaMap) {
+        if (joinPharmaMap.containsKey(date)) {
+            joinPharmaMap[date]?.addAll(pill)
+        } else {
+            joinPharmaMap[date] = pill.toMutableList()
+        }
         println("Дата: $date, Список препаратов: ${pill.joinToString(", ")}")
     }
 
 
     /**
      * Задание 10: Словарь со Сложными Типами.
-     * Создайте словарь, где ключами являются строки, а значениями - списки целых чисел. Добавьте несколько элементов в этот словарь.
-     * Словарь Путешественника. Ключи - страны, значения - словари из городов со списком интересных мест.
+     * 1. Создайте словарь, где ключами являются строки, а значениями - списки целых чисел. Добавьте несколько элементов в этот словарь.
+     * 2. Словарь Путешественника. Ключи - страны, значения - словари из городов со списком интересных мест.
      */
+    //1
+    val workoutSchedule: MutableMap<String, MutableList<Int>> = mutableMapOf(
+        "Понедельник" to mutableListOf(30, 45, 60),
+        "Среда" to mutableListOf(40, 50)
+    )
+
+    workoutSchedule["Пятница"] = mutableListOf(60, 90)
+    println()
+    for ((day, workout) in workoutSchedule) {
+        println("День недели: $day Время тренировок: ${workout.joinToString(", ")}")
+    }
+
+
+    //2
+    val travelerDictionary: MutableMap<String, MutableMap<String, MutableList<String>>> = mutableMapOf(
+        "Япония" to mutableMapOf(
+            "Токио" to mutableListOf("Токийская башня", "Синдзюку", "Храм Сэнсо-дзи"),
+            "Киото" to mutableListOf("Храм Кинкаку-дзи", "Бамбуковая роща Арасияма", "Святилище Фусими Инари")
+        ),
+        (("Россия" to mutableMapOf(
+            "Москва" to mutableListOf(
+                "Красная площадь",
+                "Собор Василия Блаженного",
+                "Музей-Заповедник \"Коломенское\""
+            ),
+            "Санкт-Петербург" to mutableListOf(
+                "Храм Спаса на Крови",
+                "Большой Петергофский дворец",
+                "Дворцовая площадь"
+            )
+        )
+
+
+                ))
+    )
+
+    travelerDictionary["Испания"] = mutableMapOf(
+        "Барселона" to mutableListOf("Саграда Фамилия", "Парк Гуэль", "Дом Бальо")
+    )
+
+    println()
+
+    for ((country, cities) in travelerDictionary) {
+        println("Страна: $country")
+        for ((city, places) in cities) {
+            println("  Город: $city")
+            println("    Интересные места: ${places.joinToString(", ")}")
+        }
+    }
+
 
     /**
      * Задание 11: Использование Множества в Качестве Значения.
      * Создай словарь, в котором ключи - это целые числа, а значения - изменяемые множества строк. Добавь данные в словарь.
      * Получи значение по ключу (это должно быть множество строк) и добавь в это множество ещё строку. Распечатай полученное множество.
      */
+    val sportsSchedule: MutableMap<Int, MutableSet<String>> = mutableMapOf(
+        1 to mutableSetOf("Выходной"),
+        2 to mutableSetOf("Плавание аэробная", "Силовая"),
+        3 to mutableSetOf("Кикбоксинг", "Бег аэробная"),
+        4 to mutableSetOf("Вело аэробная + техника педалирования"),
+        5 to mutableSetOf("Плавание техническая"),
+        6 to mutableSetOf("Бег аэробная"),
+        7 to mutableSetOf("Вело аэробная")
+    )
+
+    val sportsWeekSchedule = sportsSchedule[6]
+
+    sportsWeekSchedule?.add("Кроссфит")
+
+    println("\nВ субботу занятия: $sportsWeekSchedule")
+
+
     /**
      * Задание 12: Поиск Элемента по Значению.
-     * Создай словарь, где ключами будут пары чисел. Через перебор найди значение у которого пара будет содержать цифру 5 в качестве первого или второго значения.
-     * Справочник Растений. Ключи - типы растений (например, "Цветы", "Деревья"), значения - списки названий растений.
+     * 1. Создай словарь, где ключами будут пары чисел. Через перебор найди значение у которого пара будет содержать цифру 5 в качестве первого или второго значения.
+     * 2. Справочник Растений. Ключи - типы растений (например, "Цветы", "Деревья"), значения - списки названий растений.
      */
+    //1
+    val numberPairs: MutableMap<Pair<Int, Int>, String> = mutableMapOf(
+        Pair(1, 2) to "Первый элемент",
+        Pair(3, 5) to "Второй элемент",
+        Pair(5, 9) to "Третий элемент",
+        Pair(7, 8) to "Четвертый элемент",
+        Pair(10, 5) to "Пятый элемент"
+    )
+    println()
+    for ((key, value) in numberPairs) {
+        if (key.first == 5 || key.second == 5) {
+            println("Пара чисел: $key содержит цифру 5, значение: $value")
+        }
+    }
 
+    println()
+    for ((key, value) in numberPairs) {
+        if (value.contains("п", ignoreCase = true)) {
+            println("Пара чисел: $key имеет в значении букву 'п', значение: $value")
+        }
+    }
+    getPlantByName("Вишня")
+}
+
+fun getPlantByName(plantName: String) {
+//2
+    val plantDictionary: Map<String, List<String>> = mapOf(
+        "Деревья" to listOf("Груша", "Яблоня"),
+        "Кустарник" to listOf("Вишня", "Смородина"),
+        "Цветы" to listOf("Пион", "Орхидея", "Тюльпан")
+    )
+
+    println()
+    for ((plant, name) in plantDictionary) {
+        if (name.contains(plantName)) {
+            println("\n$plantName представляет собой $plant")
+        }  else {
+            println("Такого растения в справочнике нет")
+            break
+        }
+    }
 }
