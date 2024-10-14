@@ -10,10 +10,20 @@ fun main() {
 
 }
 
+// fun doNothing() {}  //Any, Unit, Nothing?
+// fun sum(a: Int, b: Int): Int
+// fun printList(string: String)
+// fun calculateAverage(numbers: List<Int>): Double
+// fun getStringLength(input: String?): Int?
+// fun getNullableDouble(): Double?
+// fun printNullableList(numbers: List<Int?>?): Unit
+// fun numberToNullableString(number: Int): String?
+// fun getNullableStringList(): List<String?>
+// fun checkConditions(str: String?, num: Int?): Boolean?
+
 
 fun multiplyByTwo(number: Int): Int {
-    val calculatedNumber = number * 2
-    return (calculatedNumber)
+    return (number * 2)
 }
 
 
