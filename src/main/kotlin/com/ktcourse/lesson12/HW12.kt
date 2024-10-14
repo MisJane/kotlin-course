@@ -6,6 +6,7 @@ fun main() {
     printNumbersUntil(8)
     println(findFirstNegative(listOf(8, 2, 0, -8)))
     processList(listOf("Kotlin", "Java", null, "8"))
+    drawRectangle(10, 5)
 
 }
 
@@ -53,3 +54,30 @@ fun processList(strings: List<String?>) {
 }
 
 
+fun drawRectangle(width: Int, height: Int) {
+    checkSize(width, height)
+
+    drawHorizontalLine(width)
+    drawMiddleLines(width, height)
+    drawHorizontalLine(width)
+}
+
+
+private fun checkSize(width: Int, height: Int) {
+    if (width <= 0) throw IllegalArgumentException("width должно быть положительным и больше нуля")
+    if (height <= 0) throw IllegalArgumentException("height должно быть положительным и больше нуля")
+}
+
+// Нижняя и верхняя границы
+private fun drawHorizontalLine(width: Int) {
+    val line = "+" + "-".repeat(width - 2) + "+\n"
+    print(line)
+}
+
+// Боковые границы
+private fun drawMiddleLines(width: Int, height: Int) {
+    for (i in 1 until height - 1) {
+        val middleLine = "|" + " ".repeat(width - 2) + "|\n"
+        print(middleLine)
+    }
+}
