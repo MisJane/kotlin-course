@@ -13,6 +13,7 @@ fun main() {
      * Создайте словарь, инициализированный несколькими парами "ключ-значение", где ключи - float, а значения - double.
      */
     val pair: Map<Float, Double> = mapOf<Float, Double>()
+    // val pair2 = mapOf(2.4F, 5)
 
     /**
      * Задание 3: Создание Изменяемого Словаря.
@@ -100,30 +101,31 @@ fun main() {
      * */
     val pharmaMap1: Map<String, List<String>> = mapOf(
         "2024-10-08" to listOf("Волшебная пилюля", "Таблетка для памяти"),
-        "2024-10-09" to listOf("Волшебная пилюля", "Таблетка для памяти")
+        "2024-10-09" to listOf("Таблетка для памяти")
     )
 
     val pharmaMap2: Map<String, List<String>> = mapOf(
-        "2024-10-09" to listOf("Волшебная пилюля", "Нетупин"),
-        "2024-10-10" to listOf("Нетупин")
+        "2024-10-09" to listOf("Нетупин", "Волшебная пилюля"),
+        "2024-10-10" to listOf("Таблетка для памяти")
     )
+
+    val combinedTreatment: MutableMap<String, MutableList<String>> = mutableMapOf()
     println()
-    val joinPharmaMap: MutableMap<String, MutableList<String>> = mutableMapOf()
     for ((date, pill) in pharmaMap1) {
-        joinPharmaMap[date] = pill.toMutableList()
-    }
-    for ((date, pill) in pharmaMap2) {
-        joinPharmaMap[date] = pill.toMutableList()
-    }
-    for ((date, pill) in joinPharmaMap) {
-        if (joinPharmaMap.containsKey(date)) {
-            joinPharmaMap[date]?.addAll(pill)
-        } else {
-            joinPharmaMap[date] = pill.toMutableList()
-        }
-        println("Дата: $date, Список препаратов: ${pill.joinToString(", ")}")
+        combinedTreatment[date] = pill.toMutableList()
     }
 
+    for ((date, pill) in pharmaMap2) {
+        if (combinedTreatment.containsKey(date)) {
+            combinedTreatment[date]?.addAll(pill)
+        } else {
+            combinedTreatment[date] = pill.toMutableList()
+        }
+    }
+
+    for ((date, pill) in combinedTreatment) {
+        println("Дата: $date, Список препаратов: ${pill.joinToString(", ")}")
+    }
 
     /**
      * Задание 10: Словарь со Сложными Типами.
@@ -196,11 +198,8 @@ fun main() {
         7 to mutableSetOf("Вело аэробная")
     )
 
-    val sportsWeekSchedule = sportsSchedule[6]
-
-    sportsWeekSchedule?.add("Кроссфит")
-
-    println("\nВ субботу занятия: $sportsWeekSchedule")
+    sportsSchedule[6]?.add("Кроссфит")
+    println("\nВ субботу занятия: ${sportsSchedule[6]}")
 
 
     /**
@@ -229,11 +228,13 @@ fun main() {
             println("Пара чисел: $key имеет в значении букву 'п', значение: $value")
         }
     }
+
+    //2
     getPlantByName("Вишня")
 }
 
 fun getPlantByName(plantName: String) {
-//2
+//12.2
     val plantDictionary: Map<String, List<String>> = mapOf(
         "Деревья" to listOf("Груша", "Яблоня"),
         "Кустарник" to listOf("Вишня", "Смородина"),
@@ -244,7 +245,7 @@ fun getPlantByName(plantName: String) {
     for ((plant, name) in plantDictionary) {
         if (name.contains(plantName)) {
             println("\n$plantName представляет собой $plant")
-        }  else {
+        } else {
             println("Такого растения в справочнике нет")
             break
         }
