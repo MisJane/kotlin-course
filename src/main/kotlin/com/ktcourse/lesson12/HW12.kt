@@ -2,7 +2,9 @@ package com.ktcourse.lesson12
 
 fun main() {
     println(multiplyByTwo(8))
+    println(multiplyByTwo2(8))
     println(isEven(8))
+    println(isEven2(8))
     printNumbersUntil(8)
     println(findFirstNegative(listOf(8, 2, 0, -8)))
     processList(listOf("Kotlin", "Java", null, "8"))
@@ -10,7 +12,7 @@ fun main() {
 
 }
 
-// fun doNothing() {}  //Any, Unit, Nothing?
+// fun doNothing(): Unit
 // fun sum(a: Int, b: Int): Int
 // fun printList(string: String)
 // fun calculateAverage(numbers: List<Int>): Double
@@ -26,12 +28,16 @@ fun multiplyByTwo(number: Int): Int {
     return (number * 2)
 }
 
+fun multiplyByTwo2(number: Int) = number * 2
+
 
 fun isEven(number: Int): Boolean {
     if (number % 2 == 0) {
         return true
     } else return false
 }
+
+fun isEven2(number: Int)= number % 2 == 0
 
 
 fun printNumbersUntil(n: Int) {
@@ -43,6 +49,7 @@ fun printNumbersUntil(n: Int) {
         return
     }
 }
+
 
 fun findFirstNegative(numbers: List<Int>): Int? {
     for (number in numbers) {
